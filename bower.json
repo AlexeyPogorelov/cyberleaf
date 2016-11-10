@@ -1,15 +1,19 @@
 {
-  "name": "---",
-  "description": "---",
+  "name": "Cyber Leaf",
+  "description": "Cyber Leaf landing page",
   "main": "index.html",
   "moduleType": [],
   "keywords": [
+    "Cyber",
+    "Leaf",
+    "landing",
+    "page"
   ],
   "authors": [
-    "---"
+    "AlexeyPogorelov"
   ],
   "license": "no license",
-  "homepage": "https://github.com/---/---",
+  "homepage": "https://github.com/AlexeyPogorelov/cyberleaf",
   "private": true,
   "ignore": [
     "**/.*",

@@ -1,7 +1,7 @@
 {
-  "name": "---",
+  "name": "cyberleaf",
   "version": "0.0.1",
-  "description": "---",
+  "description": "Cyber Leaf landing page",
   "main": "gulpfile.js",
   "dependencies": {
     "bower": "^1.7.9",
@@ -19,14 +19,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/---/---.git"
+    "url": "git+https://github.com/AlexeyPogorelov/cyberleaf.git"
   },
   "keywords": [
   ],
   "author": "---",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/---/---/issues"
+    "url": "https://github.com/AlexeyPogorelov/cyberleaf/issues"
   },
-  "homepage": "https://github.com/---/---#readme"
+  "homepage": "https://github.com/AlexeyPogorelov/cyberleaf#readme"
 }
