@@ -24,14 +24,31 @@ html(lang='en')
 			.container
 				h2 What we can do for you
 				ul.services-list
-					mixin service (header, description)
-						li
-							h4!= header
-							p!= description
+					mixin service (img, description)
+						li.service
+							.image-holder
+								img(src= img)
+							.text-holder
+								p!= description
 
 					+service(
-						'test',
-						'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid mollitia sit, assumenda et vel doloremque delectus accusamus, illum culpa. Exercitationem non reprehenderit iure placeat minima omnis nisi aliquam, ad vel?'
+						'img/content/gray-holder.svg',
+						'Landing and single/multi page websites'
+					)
+
+					+service(
+						'img/content/gray-holder.svg',
+						'Blogs and E-Commerce'
+					)
+
+					+service(
+						'img/content/gray-holder.svg',
+						'REST Applications, Progressive Web Apps'
+					)
+
+					+service(
+						'img/content/gray-holder.svg',
+						'SEO optimized, browser friendly and fully responsive'
 					)
 
 		section#portfolio.portfolio-section
@@ -49,20 +66,26 @@ html(lang='en')
 
 		section#about.about-section
 			.container
-				p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum dolorum reiciendis quas voluptatum odit molestiae perferendis placeat iste totam beatae numquam, veritatis repellendus nihil nam officia eius. Consequuntur, iure, deserunt?
+				p We are community of independent developers and every member of our creative team will provide you with a high quality product. Our community has great experience at developing modular and scalable systems. That makes us very flexible and efficient.
 
 		section.advantages-section
 			.container
 				h2 Our advantages
 				ul.advantages-list
-					mixin advantage (header, description)
-						li
-							h4!= header
+					mixin advantage (description)
+						li.advantage
 							p!= description
 
 					+advantage(
-						'test',
-						'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid mollitia sit, assumenda et vel doloremque delectus accusamus, illum culpa. Exercitationem non reprehenderit iure placeat minima omnis nisi aliquam, ad vel?'
+						'Community is not a big bureaucratic company. You are working with real developers directly so no tons of managers involved in the chain. This helps us to save your time and money while maintaining high quality.'
+					)
+
+					+advantage(
+						'Unlike working with a lonely freelancer when you hire us our community will make sure your project is completed in time. And of course there are strict code standards, lots of product testing and code review.'
+					)
+
+					+advantage(
+						'We have a bunch of different developers so we can cover all your needs. As market and technology evolves every member of out team must be ‘up to date’. Community keeps its eye on each developer’s growth.'
 					)
 
 		section#team.team-section
@@ -71,7 +94,7 @@ html(lang='en')
 				ul.team-list
 					mixin developer (img, name, link)
 						if name
-							li
+							li.person
 								a(href= link ? link : "")
 									.image-holder
 										img(src= img ? img : "img/content/gray-holder.svg", alt= name)

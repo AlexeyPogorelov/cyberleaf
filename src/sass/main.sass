@@ -65,6 +65,12 @@ section.services-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
+	.services-list
+		margin-top: 80px
+	.service
+		display: inline-block
+		width: 200px
+		vertical-align: top
 
 //----------------------------------
 // END SERVICES
@@ -101,6 +107,12 @@ section.advantages-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
+	.advantages-list
+		margin-top: 80px
+	.advantage
+		display: inline-block
+		width: 30%
+		vertical-align: top
 
 //----------------------------------
 // END ADVANTAGES
@@ -113,6 +125,12 @@ section.team-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
+	.team-list
+		margin-top: 80px
+	.person
+		display: inline-block
+		width: 20%
+		vertical-align: top
 
 //----------------------------------
 // END TEAM
@@ -125,6 +143,15 @@ section.contact-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
+	.form-content
+	input[type="text"], input[type="email"]
+		vertical-align: middle
+		width: 40%
+	input[type="submit"], button
+		background: rgba(0,0,0,0.1)
+	textarea
+		display: block
+		margin: auto
 
 //----------------------------------
 // END CONTACT
