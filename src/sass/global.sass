@@ -44,8 +44,13 @@ ul
 		list-style: none
 
 h1, h2, h3, h4, h5, h6
+	line-height: 1.5em
 h1
+	font-size: 76px
+	font-size: 4vw
 h2
+	font-size: 26px
+	font-size: 1.4vw
 h3
 h5
 h6
@@ -89,7 +94,7 @@ textarea
 input
 	// height: 64px
 	appearance: none
-	border: none
+	border: 1px solid #000
 	outline-color: $main-color
 
 	color: $base-font-color
@@ -98,6 +103,7 @@ input
 	// transition: background .3s
 	&:focus
 		// outline: none
+		outline-color: $main-color
 	&::placeholder
 		font: $font-stack
 		// font-weight: 400

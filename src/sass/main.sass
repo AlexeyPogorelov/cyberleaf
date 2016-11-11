@@ -69,6 +69,7 @@ section.services-section
 		margin-top: 80px
 	.service
 		display: inline-block
+		margin: 0 20px
 		width: 200px
 		vertical-align: top
 
@@ -95,6 +96,9 @@ section.about-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
+	.content-holder
+		max-width: 900px
+		margin: 0 auto
 
 //----------------------------------
 // END ABOUT
@@ -111,8 +115,9 @@ section.advantages-section
 		margin-top: 80px
 	.advantage
 		display: inline-block
-		width: 30%
+		margin: 0 1%
 		vertical-align: top
+		width: 30%
 
 //----------------------------------
 // END ADVANTAGES
@@ -140,18 +145,30 @@ section.team-section
 // CONTACT
 //----------------------------------
 section.contact-section
+	$margin: 2%
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
 	.form-content
+		max-width: 900px
+		margin: 0 auto
+		font-size: 0
+		letter-spacing: 0
 	input[type="text"], input[type="email"]
 		vertical-align: middle
-		width: 40%
+		width: 50% - $margin - $margin
 	input[type="submit"], button
 		background: rgba(0,0,0,0.1)
+		float: left
+		text-align: left
+		margin-left: $margin
 	textarea
 		display: block
-		margin: auto
+		height: 200px
+		max-width: 100%
+		width: 100% - $margin - $margin
+	input[type="text"], input[type="email"], textarea
+		margin: 10px $margin 10px
 
 //----------------------------------
 // END CONTACT
