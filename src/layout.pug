@@ -1,0 +1,21 @@
+doctype html
+html(lang='en')
+	block vars
+	head
+		title #{title}
+		block head
+			include ./partials/head.pug
+	body(class= bodyClass)
+		block noscript
+			include ./partials/noscript.pug
+
+		block content
+
+		block footer
+			include ./partials/footer.pug
+
+		block modals
+			include ./partials/modals.pug
+
+	block scripts
+		include ./partials/scripts.pug

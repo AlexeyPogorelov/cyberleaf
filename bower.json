@@ -23,7 +23,5 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "^3.0.0",
-    "jquery.browser": "latest"
   }
 }

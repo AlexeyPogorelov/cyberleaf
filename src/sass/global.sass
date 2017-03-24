@@ -1,15 +1,15 @@
 @import _mixins
 
 *
-	margin: 0
-	padding: 0
 	box-sizing: border-box
 
+html
+	font: $font
+	@media #{$media-uhd-up}
+		font-size: $font-size * 2
+
 body
-	// font-weight: 400
-	color: black
-	font: $font-stack
-	text-align: center
+	margin: 0
 	-webkit-font-smoothing: antialiased
 	-webkit-tap-highlight-color: transparent
 	&.fixed
@@ -20,37 +20,37 @@ body
 			width: 100%
 
 section
-	position: relative
-	display: block
-	width: 100%
+
 a
 	border: none
 	outline: none
-	color: $main-color
-	font: $font-stack
-	// font-weight: 400
-	// text-decoration: none
+	// color: $main-color
+
 p
-	color: $base-font-color
-	// font-size: 18px
-	// font-weight: 400
-	// line-height: 1.66em
+
+span
+
 img
 	border: none
 	outline: none
+	max-width: 100%
 	vertical-align: middle
+
 ul
+	padding: 0
 	li
 		list-style: none
+	&.list-inline
+		& > li
+			display: inline-block
 
 h1, h2, h3, h4, h5, h6
-	line-height: 1.5em
+	line-height: 1em
+	&:first-child
+		margin-top: 0
+
 h1
-	font-size: 76px
-	font-size: 4vw
 h2
-	font-size: 26px
-	font-size: 1.4vw
 h3
 h5
 h6
@@ -59,192 +59,49 @@ hr
 	border: 0
 	display: block
 	border-top: 1px solid $base-font-color
-	background-size: cover
-	height: 2px
-	margin-top: 60px
-	margin-bottom: 60px
+	height: 1px
+	margin-top: 1rem
+	margin-bottom: 1rem
+	clear: both
 
 label
 	border-radius: 0
 
 button, input, select, textarea
-	font: $font-stack
+	font: $font
+	font-size: 1rem
 
 //	SELECT
 select
 	appearance: none
 	border: 1px solid $base-font-color
 	outline-color: $main-color
-	// background-repeat: no-repeat
-	// height: 48px
 	&:-moz-focusring
 		color: transparent
 		text-shadow: none
-
-textarea
-	border: 1px solid $base-font-color
-	outline: none
-	resize: none
-	outline-color: $main-color
-	&::placeholder
-		font: $font-stack
 //	END SELECT
 
-// INPUT
-input
-	// height: 64px
-	appearance: none
-	border: 1px solid #000
+// INPUTS & TEXTAREA
+input,
+textarea
 	outline-color: $main-color
-
+	font: $font
 	color: $base-font-color
-	font: $font-stack
-	// font-weight: 400
-	// transition: background .3s
-	&:focus
-		// outline: none
-		outline-color: $main-color
+	font-size: 1rem
 	&::placeholder
-		font: $font-stack
-		// font-weight: 400
-//	END INPUT
+		font: $font
+		font-size: 1rem
 
-// CHECKBOX
-.checkbox input[type="checkbox"]
-	&:not(:checked), &:checked
-		left: -9999px
-		position: absolute
-	&:not(:checked) + label, &:checked + label
-		cursor: pointer
-		position: relative
-		padding-left: 36px
-	&:not(:checked) + label:before, &:checked + label:before
-		background: #eee
-		content: ''
-		border: 1px solid #383838
-		left: 0
-		top: 2px
-		position: absolute
-		width: 17px
-		height: 17px
-	&:not(:checked) + label:after, &:checked + label:after
-		border: 2px solid #000
-		border-left-color: transparent
-		border-top-color: transparent
-		content: ''
-		color: #000
-		position: absolute
-		top: 2px
-		left: 7px
-		font-size: 18px
-		transition: all .2s
-		height: 10px
-		width: 3px
-	&:not(:checked) + label:after
-		opacity: 0
-		transform: rotate(-90deg) scale(0)
-	&:checked + label:after
-		opacity: 1
-		transform: rotate(40deg) scale(1)
-	&:disabled
-		&:not(:checked) + label:before
-			box-shadow: none
-			border-color: #bbb
-			background-color: #ddd
-		&:checked + label
-			&:before
-				box-shadow: none
-				border-color: #bbb
-				background-color: #ddd
-			&:after
-				color: #999
-		+ label
-			color: #aaa
-	&:checked:focus + label:before, &:not(:checked):focus + label:before
-		border: 1px solid #777
-// END CHECKBOX
+textarea
 
-// RADIO
-.radio input[type="radio"]
-	&:not(:checked), &:checked
-		left: -9999px
-		position: absolute
-	&:not(:checked) + label, &:checked + label
-		cursor: pointer
-		position: relative
-		padding-left: 39px
-	&:not(:checked) + label:before, &:checked + label:before
-		//background: #eee
-		border-radius: 50%
-		border: 2px solid #000
-		content: ''
-		left: 0
-		top: 2px
-		position: absolute
-		width: 18px
-		height: 18px
-	&:not(:checked) + label:after, &:checked + label:after
-		content: ''
-		background-color: #000
-		border-radius: 50%
-		position: absolute
-		top: 7px
-		left: 5px
-		width: 12px
-		height: 12px
-		transition: all .2s
-	&:not(:checked) + label:after
-		opacity: 0
-		transform: scale(0)
-	&:checked + label:after
-		opacity: 1
-		transform: scale(1)
-	&:disabled
-		&:not(:checked) + label:before
-			box-shadow: none
-			border-color: #bbb
-			background-color: #ddd
-		&:checked + label
-			&:before
-				box-shadow: none
-				border-color: #bbb
-				background-color: #ddd
-			&:after
-				color: #999
-		+ label
-			color: #aaa
-	//&:checked:focus + label:before, &:not(:checked):focus + label:before
-		//border: 2px solid #777
-	//&:checked:focus + label:after, &:not(:checked):focus + label:after
-// END RADIO
-
-//	INPUT FILE
-.input-file
-	cursor: pointer
-	position: relative
-	label
-		cursor: pointer
-		display: block
-		transition: all .4s
-	input
-		cursor: pointer
-		display: inline-block
-		left: 0
-		opacity: 0.01
-		padding: 0
-		pointer-events: none
-		position: absolute
-		top: 0
-		//&:hover + label, &:focus + label
-//	END INPUT FILE
-
-//	INPUT NUMBER
 input
+	appearance: none
+
+input[type='number']
 	&::-webkit-outer-spin-button, &::-webkit-inner-spin-button
 		-webkit-appearance: none
-	&[type='number']
-		-moz-appearance: textfield
-//	END INPUT NUMBER
+	-moz-appearance: textfield
+//	END INPUTS & TEXTAREA
 
 
 // GRID
@@ -253,39 +110,53 @@ input
 	width: 80%
 	@media #{$media-sm}
 		width: 100%
+
 .inline-layout
 	font-size: 0
 	letter-spacing: 0
 	& > *
 		display: inline-block
 		vertical-align: top
-		font: $font-stack
+		font: $font
 	&.col-1 > *
 		width: 100%
 	&.col-2 > *
 		width: 100 / 2 + %
 	&.col-3 > *
 		width: 100 / 3 + %
+		& > .double
+			width: 100 / 3 * 2 + %
 	&.col-4 > *
 		width: 100 / 4 + %
+		& > .double
+			width: 100 / 4 * 2 + %
 	&.col-5 > *
 		width: 100 / 5 + %
+		& > .double
+			width: 100 / 5 * 2 + %
 	&.col-6 > *
 		width: 100 / 6 + %
+		& > .double
+			width: 100 / 6 * 2 + %
 	&.col-7 > *
 		width: 100 / 7 + %
+		& > .double
+			width: 100 / 7 * 2 + %
 	&.col-8 > *
 		width: 100 / 8 + %
+		& > .double
+			width: 100 / 3 * 8 + %
 	&.col-9 > *
 		width: 100 / 9 + %
+		& > .double
+			width: 100 / 9 * 2 + %
 	&.col-10 > *
 		width: 100 / 10 + %
+		& > .double
+			width: 100 / 10 * 2 + %
 
-// .hidden, .mobile-visible, .tablet-visible
-// 	display: none !important
-
-// .mobile-xs-visible, .x-mobile-visible, .tablet-visible
-// 	display: none
+.hidden
+	display: none !important
 
 // image-holder
 .image-holder
@@ -294,7 +165,9 @@ input
 	text-align: center
 	vertical-align: middle
 	img
+		object-fit: cover
 		vertical-align: middle
+		height: 100%
 		width: 100%
 	.fake-img
 		opacity: 0
@@ -363,30 +236,13 @@ input
 .text-left
 	text-align: left
 
+.pull-left
+	float: left
+.pull-right
+	float: right
+
 .nowrap
 	white-space: nowrap
-
-button, .btn, input[type="button"]
-	border: none
-	background: none
-	cursor: pointer
-	white-space: nowrap
-	text-overflow: ellipsis
-	overflow: hidden
-	// border-radius: 10px
-	// color: #fff
-	// background-color: $main-color
-	// display: inline-block
-	// padding: 23px 37px
-	// font-size: 18px
-	// font-weight: 500
-	// line-height: 1em
-	// transition: background .2s
-	&.focus, &:focus, &:hover
-		text-decoration: none
-		// background-color: $main-color-hover
-	&:active, &:focus
-		outline: none
 
 .clearfix
 	&:before,

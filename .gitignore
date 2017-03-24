@@ -1,3 +1,9 @@
+# Project based
+/dist
+src/img/content/*
+/templates
+
+# System Files
 *.zip
 *.7z
 *.dmg
@@ -12,11 +18,24 @@
 *.iml
 *.idea
 
+# System Files
 Thumbs.db
+.DS_Store
 
-idea/*
-bower_components/*
-node_modules/*
-dist/*
-src/img/content/*
-templates/*
+# IDEs and editors
+*.sublime-workspace
+/.vscode
+/.idea
+/node_modules
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+
+# IDE - VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

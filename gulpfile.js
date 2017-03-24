@@ -1,7 +1,8 @@
 var prod = false;
 
 var gulp = require('gulp'),
-	jade = require('gulp-jade'),
+	gutil = require('gulp-util'),
+	pug = require('gulp-pug'),
 	sass = require('gulp-sass'),
 	sourcemaps = require('gulp-sourcemaps'),
 	uglify = require('gulp-uglify'),
@@ -18,14 +19,14 @@ var path = {
 		fonts: 'dist/fonts/'
 	},
 	src: {
-		html: ['src/**/*.jade'],
+		html: ['src/**/*.pug'],
 		js: 'src/js/*.js',
 		style: 'src/sass/*.*',
 		img: 'src/img/**/*.*',
 		fonts: 'src/fonts/**/*.*'
 	},
 	watch: {
-		html: 'src/**/*.jade',
+		html: 'src/**/*.pug',
 		js: 'src/js/**/*.js',
 		style: 'src/sass/**/*.sass',
 		img: 'src/img/**/*.*',
@@ -47,24 +48,28 @@ var serverConfig = {
 // SASS
 gulp.task('sass', function () {
 	var outputStyle = prod ? 'compressed' : 'expanded';
+	if (prod) {
+		sourcemaps = {};
+		sourcemaps.init = gutil.noop;
+		sourcemaps.write = gutil.noop;
+	}
 	gulp.src(path.src.style)
 		.pipe(sourcemaps.init())
 		.pipe(sass({
-			soursemap: true,
+			soursemap: !prod,
 			outputStyle: outputStyle
 		}).on('error', sass.logError))
-		.pipe(autoprefixer({browsers:['last 4 versions']}))
+		.pipe(autoprefixer({browsers:['last 2 versions']}))
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest(path.dist.css))
 		.pipe(reload({stream:true}));
 });
 
-// JADE
-gulp.task('jade', function(){
-	var pretty = prod ? false : true;
+// PUG
+gulp.task('pug', function(){
 	gulp.src(path.src.html)
-		.pipe(jade({
-			pretty: true
+		.pipe(pug({
+			pretty: !prod
 		}))
 		.pipe(gulp.dest(path.dist.html))
 		.pipe(reload({stream:true}));
@@ -72,9 +77,11 @@ gulp.task('jade', function(){
 
 // SCRIPTS
 gulp.task('scripts', function(){
-	var uglify = prod ? uglify() : function () {};
+	if (!prod) {
+		uglify = gutil.noop;
+	}
 	gulp.src(path.src.js)
-		// .pipe(uglify())
+		.pipe(uglify())
 		.pipe(gulp.dest(path.dist.js))
 		.pipe(reload({stream:true}));
 });
@@ -98,11 +105,11 @@ gulp.task('browser-sync', function() {
 
 // WATCH
 gulp.task('watch', function(){
-	gulp.watch(path.watch.html, ['jade']);
+	gulp.watch(path.watch.html, ['pug']);
 	gulp.watch(path.watch.style, ['sass']);
 	gulp.watch(path.watch.js, ['scripts']);
 	gulp.watch(path.watch.img, ['images']);
 });
 
 // DEFAULT
-gulp.task('default', ['sass', 'jade', 'scripts', 'images', 'fonts', 'browser-sync', 'watch']);
+gulp.task('default', ['sass', 'pug', 'scripts', 'images', 'fonts', 'browser-sync', 'watch']);

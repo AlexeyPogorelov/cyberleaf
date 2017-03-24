@@ -8,7 +8,6 @@
 	opacity: 0 !important
 
 body
-	font: $font-stack
 	&::-webkit-scrollbar
 		height: 0
 		width: 0
@@ -34,7 +33,7 @@ body
 	pointer-events: none
 	right: 0
 	top: 0
-	z-index: 0
+	z-index: -1
 	canvas
 		margin: 0
 		padding: 0
@@ -49,7 +48,7 @@ body
 //----------------------------------
 // HERO
 //----------------------------------
-section.hero-section
+.hero-section
 	min-height: calc(100vh - 60px)
 	overflow: hidden
 	@extend %flex-middle
@@ -61,7 +60,7 @@ section.hero-section
 //----------------------------------
 // SERVICES
 //----------------------------------
-section.services-section
+.services-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
@@ -80,7 +79,7 @@ section.services-section
 //----------------------------------
 // PORTFOLIO
 //----------------------------------
-section.portfolio-section
+.portfolio-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
@@ -92,7 +91,7 @@ section.portfolio-section
 //----------------------------------
 // ABOUT
 //----------------------------------
-section.about-section
+.about-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
@@ -107,7 +106,7 @@ section.about-section
 //----------------------------------
 // ADVANTAGES
 //----------------------------------
-section.advantages-section
+.advantages-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
@@ -126,7 +125,7 @@ section.advantages-section
 //----------------------------------
 // TEAM
 //----------------------------------
-section.team-section
+.team-section
 	background: #fff
 	min-height: 100vh
 	@extend %flex-middle
@@ -144,7 +143,7 @@ section.team-section
 //----------------------------------
 // CONTACT
 //----------------------------------
-section.contact-section
+.contact-section
 	$margin: 2%
 	background: #fff
 	min-height: 100vh
@@ -172,14 +171,4 @@ section.contact-section
 
 //----------------------------------
 // END CONTACT
-//----------------------------------
-
-
-//----------------------------------
-// TEST
-//----------------------------------
-section.test-block
-	margin: 100px 0
-//----------------------------------
-// END TEST
 //----------------------------------
