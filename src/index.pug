@@ -11,8 +11,8 @@ block content
 	section#main.hero-section
 		.container
 			.content-holder
-				h1 Cyber Leaf Community
-				h2 (WEB development, UI/UX)
+				h1.hero-section__header Cyber Leaf Community.
+				h4 (WEB development, UI/UX)
 
 	include ./partials/navigation
 
@@ -28,22 +28,22 @@ block content
 							p!= description
 
 				+service(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'Landing and single/multi page websites'
 				)
 
 				+service(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'Blogs and E-Commerce'
 				)
 
 				+service(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'REST Applications, Progressive Web Apps'
 				)
 
 				+service(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'SEO optimized, browser friendly and fully responsive'
 				)
 
@@ -56,7 +56,7 @@ block content
 						li
 							a(href= link ? link : "")
 								.image-holder
-									img(src= img ? img : "img/content/gray-holder.svg", alt= name)
+									img(src= img ? img : "http://placehold.it/320x180", alt= name)
 								.text-holder
 									p!= name
 
@@ -94,30 +94,30 @@ block content
 						li.person
 							a(href= link ? link : "")
 								.image-holder
-									img(src= img ? img : "img/content/gray-holder.svg", alt= name)
+									img(src= img ? img : "http://placehold.it/320x180", alt= name)
 								.text-holder
 									p!= name
 
 				+developer(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'Dev',
 					'dev-page.html'
 				)
 
 				+developer(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'Nerd',
 					'dev-page.html'
 				)
 
 				+developer(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'Fancy chick',
 					'dev-page.html'
 				)
 
 				+developer(
-					'img/content/gray-holder.svg',
+					'http://placehold.it/320x180',
 					'Bully',
 					'dev-page.html'
 				)
