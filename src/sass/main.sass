@@ -7,19 +7,16 @@
 	display: none !important
 	opacity: 0 !important
 
-html
-	filter: invert(1)
 
 body
 	&::-webkit-scrollbar
 		height: 0
 		width: 0
 
-section
-	background: #fff
-
-*
-	transition: all .3s
+// html
+	// filter: invert(1)
+// section
+// 	background: #fff
 
 $grid-gap: 2rem
 
@@ -56,7 +53,6 @@ $grid-gap: 2rem
 //----------------------------------
 
 .background-holder
-	// 	background: #f7f7f7
 	bottom: 0
 	left: 0
 	position: fixed
@@ -80,7 +76,7 @@ $grid-gap: 2rem
 //----------------------------------
 .hero-section
 	@extend %flex-middle
-	min-height: calc(100vh - 60px)
+	min-height: calc(100vh - 6rem)
 	overflow: hidden
 	&__header
 

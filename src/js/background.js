@@ -93,9 +93,9 @@ function rGrd(x, y, r) {
 	if (typeof x !=='number' || typeof y !=='number' || typeof r !=='number' || isNaN(x) || isNaN(y) || isNaN(r)) return;
 	let gradient;
 	gradient = ctx.createRadialGradient(x, y, 0, x, y, r);
-	gradient.addColorStop(0, "#f42752");
-	gradient.addColorStop(0.3, "#f42752");
-	gradient.addColorStop(1, "#f22e58");
+	gradient.addColorStop(0, "#28dc25");
+	gradient.addColorStop(0.3, "#28dc25");
+	gradient.addColorStop(1, "#28dc25");
 	return gradient;
 }
 
