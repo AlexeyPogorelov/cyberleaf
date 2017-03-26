@@ -12,16 +12,14 @@ block content
 		.container
 			.content-holder
 				h1.hero-section__header Cyber Leaf Community.
-				h4 (WEB development, UI/UX)
-
-	include ./partials/navigation
+				p (WEB development, UI/UX)
 
 	section#services.services-section
 		.container
 			h2 What we can do for you
-			ul.services-list
+			.services-list
 				mixin service (img, description)
-					li.service
+					.services-list__service
 						.image-holder
 							img(src= img)
 						.text-holder
@@ -50,15 +48,28 @@ block content
 	section#portfolio.portfolio-section
 		.container
 			h2 We are proud of our work
-			ul.portfolio-items
+			.portfolio-items
 				mixin portfolio (img, name, link)
 					if img
-						li
+						.portfolio-items__portfolio
 							a(href= link ? link : "")
 								.image-holder
 									img(src= img ? img : "http://placehold.it/320x180", alt= name)
 								.text-holder
 									p!= name
+
+				+portfolio(
+					'http://placehold.it/320x180',
+					'Fully responsive website'
+				)
+				+portfolio(
+					'http://placehold.it/320x180',
+					'Fully responsive website'
+				)
+				+portfolio(
+					'http://placehold.it/320x180',
+					'Fully responsive website'
+				)
 
 	section#about.about-section
 		.container
@@ -68,9 +79,9 @@ block content
 	section.advantages-section
 		.container
 			h2 Our advantages
-			ul.advantages-list
+			.advantages-list
 				mixin advantage (description)
-					li.advantage
+					.advantages-list__advantage
 						p!= description
 
 				+advantage(
@@ -88,10 +99,10 @@ block content
 	section#team.team-section
 		.container
 			h2 Faces behind the scenes
-			ul.team-list
+			.team-list
 				mixin developer (img, name, link)
 					if name
-						li.person
+						.team-list__person
 							a(href= link ? link : "")
 								.image-holder
 									img(src= img ? img : "http://placehold.it/320x180", alt= name)
@@ -127,8 +138,12 @@ block content
 		.container
 			h2 Get in touch
 			form.form-content(action="#")
-				input(type="email" placeholder="Email")
-				input(type="text" placeholder="Name")
-				textarea(placeholder="Enter your message")
-				button(type="submit") Send
+				.form-group.half-width
+					input(type="email" placeholder="Email" required)
+				.form-group.half-width
+					input(type="text" placeholder="Name")
+				.form-group
+					textarea(placeholder="Enter your message" required)
+				.form-group
+					button(type="submit") Send
 

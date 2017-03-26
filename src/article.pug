@@ -1,0 +1,13 @@
+extends layout
+
+block vars
+	- var title = "Cyber Leaf"
+	- var navigation = "article"
+
+block content
+
+	include ./partials/navigation
+
+	.container.wysiwyg
+		include ./partials/content
+

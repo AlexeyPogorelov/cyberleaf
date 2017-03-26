@@ -1,3 +1,19 @@
 @import _mixins
 
-.footer
+section.footer-section
+	background: rgba(255,255,255,0.6)
+	text-align: left
+	z-index: 10
+	top: 0
+	left: 0
+	padding: 2em 0
+	width: 100vw
+	&.fixed
+		position: fixed
+	a
+		margin-right: 2em
+		vertical-align: middle
+		@extend %underline-hover
+	.logotype-holder
+		margin-right: 0
+		float: right

@@ -31,18 +31,6 @@ a
 	color: $color
 	position: relative
 	display: inline-block
-	&:after
-		content: ''
-		position: absolute
-		bottom: 0
-		left: 0
-		width: 0
-		height: 2px
-		background: $color * 2
-		transition: width $transition-time
-	&:hover
-		&:after
-			width: 100%
 
 p
 
@@ -71,20 +59,21 @@ h1, h2
 	margin-bottom: 2em
 	line-height: 1em
 h3
+	font-size: 2rem
 h4
-	font-weight: normal
+	font-size: 1.6rem
 h5
-	font-weight: normal
+	font-size: 1.2rem
 h6
-	font-weight: normal
+	font-size: 1rem
 
 hr
 	border: 0
 	display: block
-	border-top: 1px solid $base-font-color
-	height: 1px
-	margin-top: 1rem
-	margin-bottom: 1rem
+	border-top: 1px solid $color * 2
+	height: 0
+	margin-top: 3rem
+	margin-bottom: 3rem
 	clear: both
 
 label
@@ -93,6 +82,15 @@ label
 button, input, select, textarea
 	font: $font
 	font-size: 1rem
+	background-color: transparent
+	border: none
+	padding: 0
+	&:focus,
+	&:active
+		// border-color: $color
+		outline: none
+		border: none
+		border-bottom: 2px solid $color
 
 //	SELECT
 select
@@ -111,11 +109,24 @@ textarea
 	font: $font
 	color: $base-font-color
 	font-size: 1rem
+	// border: 2px solid $color * 2
+	// padding: 0.4em 0.6em
+	// border: none
+	border-bottom: 2px solid $color * 4
+	height: 2rem
 	&::placeholder
 		font: $font
 		font-size: 1rem
 
 textarea
+	resize: none
+	transition: height 300ms
+	height: 6rem
+	&:focus,
+	&:active
+	&:invalid
+		height: 2rem
+
 
 input
 	appearance: none
@@ -138,52 +149,6 @@ input[type='number']
 		padding-right: 1rem
 		width: 100%
 
-.inline-layout
-	font-size: 0
-	letter-spacing: 0
-	& > *
-		display: inline-block
-		vertical-align: top
-		font: $font
-	&.col-1 > *
-		width: 100%
-	&.col-2 > *
-		width: 100 / 2 + %
-	&.col-3 > *
-		width: 100 / 3 + %
-		& > .double
-			width: 100 / 3 * 2 + %
-	&.col-4 > *
-		width: 100 / 4 + %
-		& > .double
-			width: 100 / 4 * 2 + %
-	&.col-5 > *
-		width: 100 / 5 + %
-		& > .double
-			width: 100 / 5 * 2 + %
-	&.col-6 > *
-		width: 100 / 6 + %
-		& > .double
-			width: 100 / 6 * 2 + %
-	&.col-7 > *
-		width: 100 / 7 + %
-		& > .double
-			width: 100 / 7 * 2 + %
-	&.col-8 > *
-		width: 100 / 8 + %
-		& > .double
-			width: 100 / 3 * 8 + %
-	&.col-9 > *
-		width: 100 / 9 + %
-		& > .double
-			width: 100 / 9 * 2 + %
-	&.col-10 > *
-		width: 100 / 10 + %
-		& > .double
-			width: 100 / 10 * 2 + %
-
-.hidden
-	display: none !important
 
 // image-holder
 .image-holder

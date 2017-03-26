@@ -1,6 +1,6 @@
 $font-size: 18px
 $font-family: "Helvetica"
-$line-height: 1.4em
+$line-height: 1.6em
 $font: #{$font-size}/#{$line-height} #{$font-family}, "Arial", sans-serif
 $color: #333
 $main-color: #eee
@@ -19,6 +19,20 @@ $transition-time: 300ms
 @mixin height-lines ($lines:1, $line-height: $line-height)
 	height: $line-height * $lines
 	overflow: hidden
+
+%underline-hover
+	&:after
+		content: ''
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 0
+		height: 2px
+		background: $color * 2
+		transition: width $transition-time
+	&:hover
+		&:after
+			width: 100%
 
 //== Media queries breakpoints
 

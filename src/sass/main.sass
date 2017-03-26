@@ -7,20 +7,48 @@
 	display: none !important
 	opacity: 0 !important
 
+html
+	filter: invert(1)
+
 body
 	&::-webkit-scrollbar
 		height: 0
 		width: 0
 
+section
+	background: #fff
+
 *
 	transition: all .3s
+
+$grid-gap: 2rem
 
 %flex-middle
 	align-items: center
 	display: flex
 	justify-content: center
-	padding-top: 2rem
-	padding-bottom: 2rem
+	padding-top: $grid-gap
+	padding-bottom: $grid-gap
+	min-height: 100vh
+
+%col
+	&
+		margin: 0 -$grid-gap
+		font-size: 0
+	& > *
+		display: inline-block
+		font-size: 1rem
+		padding: 0 $grid-gap
+		vertical-align: top
+
+%col-3
+	@extend %col
+	& > *
+		width: 33%
+%col-4
+	@extend %col
+	& > *
+		width: 25%
 
 
 //----------------------------------
@@ -28,7 +56,7 @@ body
 //----------------------------------
 
 .background-holder
-	background: #f7f7f7
+	// 	background: #f7f7f7
 	bottom: 0
 	left: 0
 	position: fixed
@@ -51,10 +79,10 @@ body
 // HERO
 //----------------------------------
 .hero-section
+	@extend %flex-middle
 	min-height: calc(100vh - 60px)
 	overflow: hidden
-	@extend %flex-middle
-	.hero-section__header
+	&__header
 
 //----------------------------------
 // END HERO
@@ -64,16 +92,11 @@ body
 // SERVICES
 //----------------------------------
 .services-section
-	background: #fff
-	min-height: 100vh
 	@extend %flex-middle
-	.services-list
-		margin-top: 80px
-	.service
-		display: inline-block
-		margin: 0 20px
-		width: 200px
-		vertical-align: top
+
+.services-list
+	@extend %col-4
+	&__service
 
 //----------------------------------
 // END SERVICES
@@ -83,9 +106,11 @@ body
 // PORTFOLIO
 //----------------------------------
 .portfolio-section
-	background: #fff
-	min-height: 100vh
 	@extend %flex-middle
+
+.portfolio-items
+	@extend %col-3
+	&__portfolio
 
 //----------------------------------
 // END PORTFOLIO
@@ -95,11 +120,9 @@ body
 // ABOUT
 //----------------------------------
 .about-section
-	background: #fff
-	min-height: 100vh
 	@extend %flex-middle
 	.content-holder
-		max-width: 900px
+		max-width: 50rem
 		margin: 0 auto
 
 //----------------------------------
@@ -110,16 +133,10 @@ body
 // ADVANTAGES
 //----------------------------------
 .advantages-section
-	background: #fff
-	min-height: 100vh
 	@extend %flex-middle
 	.advantages-list
-		margin-top: 80px
+		@extend %col-3
 	.advantage
-		display: inline-block
-		margin: 0 1%
-		vertical-align: top
-		width: 30%
 
 //----------------------------------
 // END ADVANTAGES
@@ -129,15 +146,10 @@ body
 // TEAM
 //----------------------------------
 .team-section
-	background: #fff
-	min-height: 100vh
 	@extend %flex-middle
-	.team-list
-		margin-top: 80px
+.team-list
+	@extend %col-4
 	.person
-		display: inline-block
-		width: 20%
-		vertical-align: top
 
 //----------------------------------
 // END TEAM
@@ -147,31 +159,59 @@ body
 // CONTACT
 //----------------------------------
 .contact-section
-	$margin: 2%
-	background: #fff
-	min-height: 100vh
 	@extend %flex-middle
+	.container
+		display: block
+		max-width: 50rem
 	.form-content
-		max-width: 900px
-		margin: 0 auto
+		margin: 0 ($grid-gap * -0.5)
 		font-size: 0
 		letter-spacing: 0
-	input[type="text"], input[type="email"]
-		vertical-align: middle
-		width: 50% - $margin - $margin
+	.form-group
+		display: inline-block
+		padding: 0 ($grid-gap / 2) $grid-gap
+		vertical-align: top
+		font-size: 1rem
+		width: 100%
+		&.half-width
+			// padding-left: ($grid-gap / 2)
+			// padding-right: ($grid-gap / 2)
+			width: 50%
+	input
+		width: 100%
 	input[type="submit"], button
-		background: rgba(0,0,0,0.1)
-		float: left
-		text-align: left
-		margin-left: $margin
+		text-transform: uppercase
+		font-weight: 900
+		cursor: pointer
+		color: $color * 2
+		transition: color 100ms
+		&:after
+			content: '⇢'
+			margin-left: 0.5em
+		&:focus,
+		&:hover,
+		&:active
+			border: none
+			color: $color
 	textarea
 		display: block
-		height: 200px
-		max-width: 100%
-		width: 100% - $margin - $margin
-	input[type="text"], input[type="email"], textarea
-		margin: 10px $margin 10px
+		width: 100%
 
 //----------------------------------
 // END CONTACT
 //----------------------------------
+
+//----------------------------------
+// WYSIWYG
+//----------------------------------
+.wysiwyg
+	h1, h2
+		margin-bottom: 1em
+	ul, ol
+		padding-left: 2em
+	a
+		@extend %underline-hover
+//----------------------------------
+// END WYSIWYG
+//----------------------------------
+
