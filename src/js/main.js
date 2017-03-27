@@ -37,7 +37,7 @@ Breakpoints.prototype.clearBreakpoints = function () {
 Breakpoints.prototype.clearCallbacks = function () {
 	this.changeCallbacks = [];
 }
-Breakpoints.prototype.getCurrent = function (top, offset) {
+Breakpoints.prototype.getCurrentNumber = function (top, offset) {
 	var i;
 	top += offset;
 	for (i = 0; i < this.breakpoints.length; i++) {
@@ -53,12 +53,14 @@ Breakpoints.prototype.setProgress = function (top, offset, start, end) {
 	this.progress = (top - start) / (end - start);
 }
 Breakpoints.prototype.getProgress = function () {
-	console.log(this.progress);
 	return this.progress;
+}
+Breakpoints.prototype.getCurrent = function () {
+	return this.current;
 }
 Breakpoints.prototype.update = function (top, windowHeight) {
 	var current,
-		i = this.getCurrent(top, windowHeight / 2);
+		i = this.getCurrentNumber(top, windowHeight / 2);
 	current = this.names[i];
 	if (current !== this.current) {
 		this.current = current;
@@ -82,26 +84,26 @@ Breakpoints.prototype.onChange = function (fun) {
 }
 var breakpoints = new Breakpoints();
 
-window.addEventListener('scroll', scrollEvent);
+// window.addEventListener('scroll', scrollEvent);
 window.addEventListener('resize', recalculateBreakpoints);
 // window.addEventListener('DOMContentLoaded', recalculateBreakpoints);
 window.addEventListener('load', recalculateBreakpoints);
-window.addEventListener('click', breakpoints.getProgress.bind(breakpoints));
+// window.addEventListener('click', breakpoints.getProgress.bind(breakpoints));
 
-function scrollEvent () {
-	scroll = window.pageYOffset;
-	breakpoints.update(scroll, windowHeight);
-}
+// function scrollEvent () {
+// 	scrollTop = window.pageYOffset;
+// 	breakpoints.update(scrollTop, windowHeight);
+// }
 
 function recalculateBreakpoints () {
 	windowWidth = window.innerWidth;
 	windowHeight = window.innerHeight;
-	scroll = window.pageYOffset;
-	scrollEvent();
+	scrollTop = window.pageYOffset;
+	// scrollEvent();
 	breakpoints.fill('section');
-	breakpoints.update(scroll, windowHeight);
+	breakpoints.update(scrollTop, windowHeight);
 }
 
-breakpoints.onChange.call(breakpoints, function (state) {
-	console.log(state);
-});
+// breakpoints.onChange.call(breakpoints, function (state) {
+// 	console.log(state);
+// });

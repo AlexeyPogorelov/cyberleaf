@@ -1,105 +1,73 @@
-const c = document.getElementById("hero-canvas"),
-	rad = Math.PI / 180,
-	ctx = c.getContext("2d");
 
-var frames = 0,
-	cw = c.width = window.innerWidth,
-	cx = cw / 2,
-	ch = c.height = window.innerHeight,
-	cy = ch / 2,
-	R = Math.min(cx, cy) / 2, // amoeb radius
-	points = [];
-
-
-	ctx.strokeStyle = "#f22e58";
-
-	window.addEventListener('resize', function () {
-		cw = window.innerWidth;
-		ch = window.innerHeight;
-		cx = cw / 2;
-		cy = ch / 2;
-		R = Math.min(cx, cy) / 2;
-		updatePoints();
-	}, false);
-
-function Point(a) {
-	this.rand = rnd() * 360;
-	this.a = a;
-	this.r = R + R / 5 * Math.sin(this.rand * rad);
-	this.x = cx + this.r * Math.cos(a * rad);
-	this.y = cy + this.r * Math.sin(a * rad);
+function Background (canvas) {
+	this.rad = Math.PI / 180;
+	this.ctx = canvas.getContext("2d");
+	this.frames = 0;
+	this.height = windowHeight;
+	this.heightHalf = this.height / 2;
+	this.width = windowWidth;
+	this.widthHalf = this.width / 2;
+	canvas.height = this.height;
+	canvas.width = this.width;
 }
 
-function createPoints() {
-	var step = 30; // how much points
-	for(let a = 0; a < 360; a += step) {
-		points.push( new Point(a) );
+Background.prototype.renderFrame = function () {
+	// this.frames++;
+	this.updateState();
+
+	// demo
+	breakpoints.getCurrent();
+
+	var progress = breakpoints.getProgress();
+	progress = Math.floor(progress * 255).toString(16);
+	if (progress.length === 1) {
+		progress = '0' + progress;
 	}
-}
-createPoints();
-
-function updatePoints() {
-	var step = 360 / points.length;
-	for(let i = 0; i < points.length; i++) { // how much points
-		let a = points[i].a;
-		points[i].r = R + R / 5 * Math.sin(points[i].rand * rad);
-		points[i].x = cx + points[i].r * Math.cos(a * rad);
-		points[i].y = cy + points[i].r * Math.sin(a * rad);
-	}
+	this.radialGradient(progress + progress + progress, progress + progress + progress);
 }
 
-function paintPoints(o) {
-	var lastPointIndex = o.length - 1,
-		pu0 = unionPoint(o, lastPointIndex, 0);
-	ctx.fillStyle = rGrd(cx, cy, 1.2 * R);
-	ctx.beginPath();
-	ctx.moveTo(pu0.x, pu0.y);
-	for (var i = 0; i < o.length - 1; i++) {
-		var pui = unionPoint(o, i, i + 1); 
-		ctx.quadraticCurveTo(o[i].x, o[i].y, pui.x, pui.y); 
-	}
-	ctx.quadraticCurveTo(o[lastPointIndex].x, o[lastPointIndex].y, pu0.x, pu0.y);
-	ctx.fill();
+Background.prototype.radialGradient = function (from, to) {
+	var gradient = this.ctx.createRadialGradient(
+		this.widthHalf,
+		this.heightHalf,
+		0,
+		this.widthHalf,
+		this.heightHalf,
+		this.widthHalf
+	);
+	gradient.addColorStop(0, "#" + from);
+	gradient.addColorStop(1, "#" + to);
+	this.ctx.fillStyle = gradient;
+	this.ctx.fillRect(0, 0, this.width, this.height);
 }
 
-function unionPoint(obj, a, b) {
-	var up = {};
-	up.x = (obj[a].x + obj[b].x) / 2;
-	up.y = (obj[a].y + obj[b].y) / 2;  
-	return up;
+Background.prototype.updateState = function () {
+	scrollTop = window.pageYOffset;
+	breakpoints.update(scrollTop, windowHeight);
 }
 
-function renderFrame() {
-	frames++;
-
-	ctx.clearRect(0, 0, cw, ch);
-
-	for (var i = 0; i <= points.length - 1; i++) {
-		let p = points[i];
-		p.a += 0.1; // rotate speed
-		p.r = R + (R / 5.5) * Math.sin((frames + p.rand) * rad);
-		p.x = cx + p.r * Math.cos(p.a * rad);
-		p.y = cy + p.r * Math.sin(p.a * rad);
-	}
-
-	paintPoints(points);
-
-	window.requestAnimationFrame(renderFrame);
-}
-
-window.requestAnimationFrame(renderFrame);
-
-function rGrd(x, y, r) {
-	if (typeof x !=='number' || typeof y !=='number' || typeof r !=='number' || isNaN(x) || isNaN(y) || isNaN(r)) return;
-	let gradient;
-	gradient = ctx.createRadialGradient(x, y, 0, x, y, r);
-	gradient.addColorStop(0, "#f1f1f1");
-	gradient.addColorStop(0.3, "#f1f1f1");
-	gradient.addColorStop(1, "#f1f1f1");
-	return gradient;
-}
-
-function rnd() { // @tmrDevelops : just alternative for Math.random();
+Background.prototype.rnd = function () { // @tmrDevelops : just alternative for Math.random();
 	Math.seed = (Math.seed * 108013 + 2531011) & 0xffffffff;
 	return Math.abs(Math.seed >> 16) / 32869;
 }
+
+
+
+
+
+
+setTimeout(function () {
+
+var background = new Background(
+		document.getElementById("hero-canvas")
+	)
+
+setTimeout(function () {
+(function loop() {
+	background.renderFrame();
+	window.requestAnimationFrame(loop);
+})();
+}, 200);
+
+}, 200);
+
