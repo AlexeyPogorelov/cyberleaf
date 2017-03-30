@@ -1,0 +1,32 @@
+extends layout
+
+block vars
+	- var title = "Cyber Leaf"
+	- var navigation = "blog"
+
+block content
+
+	section.blog-section
+		.container
+			h2 Blog
+			.blog-list
+				mixin article (header, description)
+					.blog-list__article
+						h4!= header
+						p!= description
+
+				+article(
+					'We are community',
+					'Community is not a big bureaucratic company. You are working with real developers directly so no tons of managers involved in the chain. This helps us to save your time and money while maintaining high quality.'
+				)
+
+				+article(
+					'Time management',
+					'Unlike working with a lonely freelancer when you hire us our community will make sure your project is completed in time. And of course there are strict code standards, lots of product testing and code review.'
+				)
+
+				+article(
+					'Our skills',
+					'We have a bunch of different developers so we can cover all your needs. As market and technology evolves every member of out team must be ‘up to date’. Community keeps its eye on each developer’s growth.'
+				)
+

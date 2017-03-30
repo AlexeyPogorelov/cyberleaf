@@ -1,16 +1,15 @@
 extends layout
 
 block vars
-	- var title = "Cyber Leaf"
+	- var title = "CyberLeaf"
 	- var navigation = "index"
 
 block content
 
 	section#hero.hero-section
 		.container
-			.content-holder
-				h1.hero-section__header Cyber Leaf Community.
-				p (WEB development, UI/UX)
+			h1.hero-section__header CyberLeaf Community.
+			p (WEB development, UI/UX)
 
 	section#services.services-section
 		.container
@@ -78,19 +77,23 @@ block content
 		.container
 			h2 Our advantages
 			.advantages-list
-				mixin advantage (description)
+				mixin advantage (header, description)
 					.advantages-list__advantage
+						h4!= header
 						p!= description
 
 				+advantage(
+					'We are community',
 					'Community is not a big bureaucratic company. You are working with real developers directly so no tons of managers involved in the chain. This helps us to save your time and money while maintaining high quality.'
 				)
 
 				+advantage(
+					'Time management',
 					'Unlike working with a lonely freelancer when you hire us our community will make sure your project is completed in time. And of course there are strict code standards, lots of product testing and code review.'
 				)
 
 				+advantage(
+					'Our skills',
 					'We have a bunch of different developers so we can cover all your needs. As market and technology evolves every member of out team must be ‘up to date’. Community keeps its eye on each developer’s growth.'
 				)
 
@@ -103,37 +106,37 @@ block content
 						.team-list__person
 							a(href= link ? link : "")
 								.image-holder
-									img(src= img ? img : "http://placehold.it/320x180", alt= name)
+									img(src= img ? img : "http://placehold.it/320x280", alt= name)
 								.text-holder
 									p!= name
 
 				+developer(
-					'http://placehold.it/320x180',
+					'http://placehold.it/320x280',
 					'Dev',
 					'dev-page.html'
 				)
 
 				+developer(
-					'http://placehold.it/320x180',
+					'http://placehold.it/320x280',
 					'Nerd',
 					'dev-page.html'
 				)
 
 				+developer(
-					'http://placehold.it/320x180',
+					'http://placehold.it/320x280',
 					'Fancy chick',
 					'dev-page.html'
 				)
 
 				+developer(
-					'http://placehold.it/320x180',
+					'http://placehold.it/320x280',
 					'Bully',
 					'dev-page.html'
 				)
 
 
 	section#contact.contact-section
-		.container
+		.container.content-holder
 			h2 Get in touch
 			form.form-content(action="#")
 				.form-group.half-width

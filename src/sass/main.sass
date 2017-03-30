@@ -45,10 +45,14 @@ $grid-gap: 2rem
 	@extend %col
 	& > *
 		width: 33%
+		@media #{$media-xs}
+			width: 100%
 %col-4
 	@extend %col
 	& > *
 		width: 25%
+		@media #{$media-xs}
+			width: 100%
 
 
 //----------------------------------
@@ -56,6 +60,7 @@ $grid-gap: 2rem
 //----------------------------------
 
 .background-holder
+	display: none
 	bottom: 0
 	left: 0
 	position: fixed
@@ -120,9 +125,6 @@ $grid-gap: 2rem
 //----------------------------------
 .about-section
 	@extend %flex-middle
-	.content-holder
-		max-width: 50rem
-		margin: 0 auto
 
 //----------------------------------
 // END ABOUT
@@ -159,9 +161,6 @@ $grid-gap: 2rem
 //----------------------------------
 .contact-section
 	@extend %flex-middle
-	.container
-		display: block
-		max-width: 50rem
 	.form-content
 		margin: 0 ($grid-gap * -0.5)
 		font-size: 0
@@ -187,11 +186,16 @@ $grid-gap: 2rem
 		&:after
 			content: '⇢'
 			margin-left: 0.5em
+			// TODO translate
+			transition: margin 300ms
 		&:focus,
 		&:hover,
 		&:active
 			border: none
 			color: $color
+			&:after
+				margin-left: 1em
+
 	textarea
 		display: block
 		width: 100%
