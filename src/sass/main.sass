@@ -183,18 +183,30 @@ $grid-gap: 2rem
 		cursor: pointer
 		color: $color * 2
 		transition: color 100ms
-		&:after
-			content: '⇢'
-			margin-left: 0.5em
+		&:after,
+		svg
+			content: ''
+			display: inline-block
+			margin-left: 0.2em
 			// TODO translate
 			transition: margin 300ms
+			vertical-align: middle
+			margin-top: -2px
+			height: 10px
+			width: 10px
+
+			background:
+				size: contain
+			fill: $color * 2
 		&:focus,
 		&:hover,
 		&:active
 			border: none
 			color: $color
-			&:after
+			&:after,
+			svg
 				margin-left: 1em
+				fill: $color
 
 	textarea
 		display: block
