@@ -8,10 +8,22 @@
 	opacity: 0 !important
 
 
-body
+%scrollbar
+
 	&::-webkit-scrollbar
-		height: 0
-		width: 0
+		height: 0.5rem
+		width: 0.5rem
+
+	&::-webkit-scrollbar-track
+		box-shadow: inset 0 0 6px rgba(0,0,0,0.3)
+
+	&::-webkit-scrollbar-thumb
+		background-color: darkgrey
+		outline: 1px solid slategrey
+
+body
+	@extend %scrollbar
+
 
 // html
 // 	filter: invert(1)
@@ -26,6 +38,7 @@ $grid-gap: 2rem
 %flex-middle
 	align-items: center
 	display: flex
+	flex-direction: column
 	justify-content: center
 	padding-top: $grid-gap
 	padding-bottom: $grid-gap
@@ -53,6 +66,15 @@ $grid-gap: 2rem
 		width: 25%
 		@media #{$media-xs}
 			width: 100%
+%col-12
+	@extend %col
+	@extend %scrollbar
+	overflow: auto
+	white-space: nowrap
+	margin-left: 0
+	margin-right: 0
+	& > *
+		width: 100%
 
 
 //----------------------------------
@@ -99,7 +121,7 @@ $grid-gap: 2rem
 	@extend %flex-middle
 
 .services-list
-	@extend %col-4
+	@extend %col-3
 	&__service
 
 //----------------------------------
@@ -113,8 +135,15 @@ $grid-gap: 2rem
 	@extend %flex-middle
 
 .portfolio-items
-	@extend %col-3
+	@extend %col-12
+	width: 100%
 	&__portfolio
+		padding-left: 0
+		width: 80%
+		&:first-child
+			padding-left: 10%
+		&:last-child
+			margin-right: 10%
 
 //----------------------------------
 // END PORTFOLIO
@@ -149,7 +178,7 @@ $grid-gap: 2rem
 .team-section
 	@extend %flex-middle
 .team-list
-	@extend %col-4
+	@extend %col-3
 	.person
 
 //----------------------------------
@@ -215,6 +244,20 @@ $grid-gap: 2rem
 //----------------------------------
 // END CONTACT
 //----------------------------------
+
+//----------------------------------
+// BLOG
+//----------------------------------
+.blog-list
+	&__article
+		margin-top: 4rem
+	&__article-header
+		@extend %underline-hover
+
+//----------------------------------
+// END BLOG
+//----------------------------------
+
 
 //----------------------------------
 // WYSIWYG

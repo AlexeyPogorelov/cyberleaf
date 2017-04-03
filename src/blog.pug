@@ -12,7 +12,8 @@ block content
 			.blog-list
 				mixin article (header, description)
 					.blog-list__article
-						h4!= header
+						h4
+							a.blog-list__article-header(href="article.html")!= header
 						p!= description
 
 				+article(
